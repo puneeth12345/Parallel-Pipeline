@@ -1,70 +1,20 @@
 pipeline {
-				agent none
+				agent any
 				stages {
-					stage('BUILD') {
-					agent any
+					stage('STAGE1') {
 						steps {
-							sh '''
-								pwd
-								sleep 5
-								echo This is the fist stage: BUILD
-							'''
+							sh 'sleep 5'
+							sh 'exit 1'
+							
 						}	
 					}
+				stage('STAGE2') {
+					agent any
+						steps {
+							echo "STAGE2 is running"
+							sh 'sleep 5'
+						}	
+					}	
 					
-					stage('TEST') {
-						parallel {
-							stage('TEST1') {
-							agent { label 'agent1' }
-								steps {
-									sh '''
-										pwd
-										sleep 5
-										echo This is the fist stage: TEST1
-									'''
-									}	
-								}
-							stage('TEST2') {
-							agent { label 'agent1' }
-								steps {
-									sh '''
-										pwd
-										sleep 5
-										echo This is the second stage: TEST2
-									'''
-									}	
-								}
-							stage('TEST3') {
-							agent { label 'master' }
-								steps {
-									sh '''
-										pwd
-										sleep 5
-										echo This is the third stage: TEST3
-									'''
-									}	
-								}
-							stage('TEST4') {
-							agent any
-								steps {
-									sh '''
-										pwd
-										sleep 5
-										echo This is the fourth stage: TEST4
-									'''
-									}	
-								}
-							}	
-						}
-					stage('DEPLOY') {
-					agent any
-						steps {
-							sh '''
-								pwd
-								sleep 5
-								echo This is the fist stage: DEPLOY
-							'''
-						}	
-					}
 				}
 			}
