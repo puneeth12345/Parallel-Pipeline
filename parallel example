@@ -18,7 +18,7 @@ pipeline {
 									sh '''
 										pwd
 										sleep 5
-										echo This is the fist stage: TEST
+										echo This is the fist stage: TEST1
 									'''
 									}	
 								}
@@ -27,7 +27,7 @@ pipeline {
 									sh '''
 										pwd
 										sleep 5
-										echo This is the fist stage: TEST
+										echo This is the second stage: TEST2
 									'''
 									}	
 								}
@@ -36,16 +36,16 @@ pipeline {
 									sh '''
 										pwd
 										sleep 5
-										echo This is the fist stage: TEST
+										echo This is the third stage: TEST3
 									'''
 									}	
 								}
-							stage('TEST3') {
+							stage('TEST4') {
 								steps {
 									sh '''
 										pwd
 										sleep 5
-										echo This is the fist stage: TEST
+										echo This is the fourth stage: TEST4
 									'''
 									}	
 								}
