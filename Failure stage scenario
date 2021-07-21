@@ -3,6 +3,7 @@ pipeline {
 				stages {
 					stage('STAGE1') {
 						steps {
+							catchError(buildResult: 'SUCESS', stageResult: 'FAILURE')
 							sh 'sleep 5'
 							sh 'exit 1'
 							
