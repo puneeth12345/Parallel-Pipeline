@@ -12,15 +12,45 @@ pipeline {
 					}
 					
 					stage('TEST') {
-						steps {
-							sh '''
-								pwd
-								sleep 5
-								echo This is the fist stage: TEST
-							'''
-						}	
-					}
-					
+						parallel {
+							stage('TEST1') {
+								steps {
+									sh '''
+										pwd
+										sleep 5
+										echo This is the fist stage: TEST
+									'''
+									}	
+								}
+							stage('TEST2') {
+								steps {
+									sh '''
+										pwd
+										sleep 5
+										echo This is the fist stage: TEST
+									'''
+									}	
+								}
+							stage('TEST3') {
+								steps {
+									sh '''
+										pwd
+										sleep 5
+										echo This is the fist stage: TEST
+									'''
+									}	
+								}
+							stage('TEST3') {
+								steps {
+									sh '''
+										pwd
+										sleep 5
+										echo This is the fist stage: TEST
+									'''
+									}	
+								}
+							}	
+						}
 					stage('DEPLOY') {
 						steps {
 							sh '''
